@@ -1,1 +1,1 @@
-mv gitignore .gitignore
+bash install.sh
