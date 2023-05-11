@@ -11,5 +11,13 @@ def start(update, context):
 def chat(update, context):
     bot_send_chat_action(update, context)
     message = update.message.text
-    response = request_chat_gpt(message)
-    update_message_reply_text(update, response)
+    job_queue = context.job_queue
+    job_queue.run_once(send_response, 0, context=(update.message.chat.id, message))
+
+def send_response(context):
+    # Retrieve the chat ID and message text from the job context
+    chat_id, message_text = context.job.context
+
+    # Send the delayed response
+    response = request_chat_gpt(message_text)
+    context.bot.send_message(chat_id=chat_id, text=response)

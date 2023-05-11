@@ -24,7 +24,7 @@ chat_handler = MessageHandler(Filters.text, main.chat)
 
 
 handlers = [
+    chat_handler,
     login_handler,
-    chat_handler
     
 ]

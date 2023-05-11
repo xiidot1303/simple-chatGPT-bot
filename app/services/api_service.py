@@ -12,4 +12,8 @@ headers = {
 def request_chat_gpt(text):
     payload = {"question": text}
     response = requests.request("POST", url, json=payload, headers=headers)
-    return json.loads(response.content.decode())['answer']
+    content = response.content.decode()
+    try:
+        return json.loads(content)['answer']
+    except:
+        return content
