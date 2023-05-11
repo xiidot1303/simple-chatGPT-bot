@@ -15,9 +15,9 @@ read db_password
 echo "Bot token: "
 read bot_token
 echo "Project port"
-read rapid_api_key
-echo "Rapid API key"
 read port
+echo "Rapid API key"
+read rapid_api_key
 echo "Project domain"
 read domain
 
