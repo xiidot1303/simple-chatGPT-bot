@@ -11,7 +11,7 @@ bot_obj = Bot(BOT_API_TOKEN)
 
 if not DEBUG:  # in production
     updater = 1213
-    dp = Dispatcher(bot_obj, None, workers=1000, use_context=True, persistence=persistence, job_queue=JobQueue)
+    dp = Dispatcher(bot_obj, None, workers=1000, use_context=True, persistence=persistence, job_queue=JobQueue())
 
 else:  # in development
     updater = Updater(

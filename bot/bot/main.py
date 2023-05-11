@@ -12,7 +12,7 @@ def chat(update, context):
     bot_send_chat_action(update, context)
     message = update.message.text
     job_queue = context.job_queue
-    job_queue.run_once(send_response, 0, context=(update.message.chat.id, message))
+    job_queue.run_once(callback=send_response, when=0, context=(update.message.chat.id, message))
 
 def send_response(context):
     # Retrieve the chat ID and message text from the job context
