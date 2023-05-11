@@ -13,9 +13,9 @@ def bot_webhook(request):
         updater.start_polling()
     else:
         update = Update.de_json(json.loads(request.body.decode("utf-8")), dp.bot)
-        dp.job_queue.start()
         dp.update_persistence(update)
         dp.process_update(update)
+        dp.job_queue.start()
 
     return HttpResponse("Bot started!")
 
